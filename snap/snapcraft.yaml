@@ -1,0 +1,25 @@
+name: edgegateway
+version: '0.0.1'
+summary: Edge Gateway GPIO and MQTT message processing
+description: |
+  Read GPIO pin values, creates a JSON message to publish and publishes via MQTT.
+  Subscribes to MQT Broker for requests. processes the JSON payload and performs the action.
+  Written for a DEll Edge Gateway 3001 running Ubuntu 16 Core
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+apps:
+    edgegateway:
+      plugs: [gpio, gpio-memory-control]
+      command: main 
+parts:
+    edgegateway:
+      plugin: python
+      python-version: python3
+      source: .
+
+    mqtt-paho-python3:
+      plugin: python3
+      source: https://github.com/eclipse/paho.mqtt.python
+      source-tag: v1.1
+      source-type: git
