@@ -15,11 +15,12 @@ apps:
 parts:
     edgegateway:
       plugin: python
-      python-version: python3
-      source: .
+      source: https://github.com/iCyberMike/edgegateway.git
+      source-tag: v1.0
+      source-type: git
 
     mqtt-paho-python3:
-      plugin: python3
+      plugin: python
       source: https://github.com/eclipse/paho.mqtt.python
       source-tag: v1.1
       source-type: git
